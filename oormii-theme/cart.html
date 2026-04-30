@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#0d0e11">
+<meta name="description" content="Your Oormii Jewels shopping cart.">
+<title>Your Cart — Oormii Jewels</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Italiana&family=Josefin+Sans:wght@200;300;400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/main.css">
+</head>
+<body>
+
+<div id="cursor"></div><div id="cursor-ring"></div><div id="scroll-bar"></div>
+
+<div id="loader"><div class="loader-logo">OORMII</div><div class="loader-bar"></div><div class="loader-tag">Your Bag</div></div>
+<div id="toast"></div>
+
+<div id="search-overlay">
+  <button class="search-close" onclick="closeSearch()">×</button>
+  <div class="search-input-wrap"><span class="search-icon">⌕</span><input type="text" placeholder="Search…" id="search-input"></div>
+</div>
+
+<div class="drawer-overlay" id="drawer-overlay" onclick="closeCart()"></div>
+<div id="cart-drawer">
+  <div class="drawer-header"><span class="drawer-title">Your Bag</span><button class="drawer-close" onclick="closeCart()">×</button></div>
+  <div class="drawer-empty"><div class="drawer-empty-icon">◇</div><p>Your bag is beautifully empty</p></div>
+  <div class="drawer-footer"><div class="drawer-total"><span>Subtotal</span><span>₹0.00</span></div><a href="cart.html" class="btn-primary" style="display:flex;justify-content:center;width:100%">View Cart</a></div>
+</div>
+
+<div class="mobile-nav" id="mobile-nav">
+  <a href="index.html">Home</a><a href="collections.html">Collections</a><a href="about.html">Our Story</a>
+  <a href="blog.html">Journal</a><a href="contact.html">Contact</a><a href="faq.html">FAQ</a><a href="account.html">Account</a>
+</div>
+
+<div class="announcement"><strong>FREE shipping</strong> on orders above ₹999  ·  Use code <strong>FIRSTTIME10</strong> for 10% off</div>
+
+<nav class="main-nav solid" id="main-nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">OORMII</a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="collections.html">Collections</a></li>
+      <li><a href="about.html">Our Story</a></li>
+      <li><a href="blog.html">Journal</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button onclick="openSearch()">⌕</button>
+      <a href="account.html">◯</a>
+      <button onclick="openCart()">⛂<span class="cart-count">0</span></button>
+      <button class="hamburger" onclick="toggleNav()" id="hamburger"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</nav>
+
+<section class="cart-section">
+  <nav class="breadcrumb" style="justify-content:flex-start;margin-bottom:1.5rem;max-width:1300px;margin-left:auto;margin-right:auto">
+    <a href="index.html">Home</a><span class="breadcrumb-sep">◆</span>
+    <span>Your Bag</span>
+  </nav>
+  <h1 class="page-title reveal" style="text-align:left;margin-bottom:.5rem;max-width:1300px;margin-left:auto;margin-right:auto;font-size:clamp(2rem,5vw,3.5rem)">Your <em>bag</em></h1>
+  <p class="section-sub reveal" style="margin-bottom:3rem;max-width:1300px;margin-left:auto;margin-right:auto">3 pieces · You're <strong style="color:var(--gold)">₹201 away</strong> from free shipping</p>
+
+  <div class="cart-grid">
+    <!-- ITEMS -->
+    <div class="cart-items reveal-left">
+      <div class="cart-item">
+        <div class="cart-item-img"><img src="https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=400&q=80&auto=format&fit=crop" alt="" loading="lazy" decoding="async"></div>
+        <div>
+          <h3 class="cart-item-name">Tear Drop Pendant Necklace</h3>
+          <p class="cart-item-meta">SILVER · 16" · QTY 1</p>
+          <p class="cart-item-price">₹2,499</p>
+        </div>
+        <div class="cart-item-actions">
+          <div class="qty-control"><button>−</button><input type="number" value="1" min="1"><button>+</button></div>
+          <button class="cart-remove" title="Remove">×</button>
+        </div>
+      </div>
+
+      <div class="cart-item">
+        <div class="cart-item-img"><img src="https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=400&q=80&auto=format&fit=crop" alt="" loading="lazy" decoding="async"></div>
+        <div>
+          <h3 class="cart-item-name">Prism Earrings</h3>
+          <p class="cart-item-meta">SILVER · QTY 1</p>
+          <p class="cart-item-price">₹2,599</p>
+        </div>
+        <div class="cart-item-actions">
+          <div class="qty-control"><button>−</button><input type="number" value="1" min="1"><button>+</button></div>
+          <button class="cart-remove" title="Remove">×</button>
+        </div>
+      </div>
+
+      <div class="cart-item">
+        <div class="cart-item-img"><img src="https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=400&q=80&auto=format&fit=crop" alt="" loading="lazy" decoding="async"></div>
+        <div>
+          <h3 class="cart-item-name">Starfish Chain Earrings</h3>
+          <p class="cart-item-meta">SILVER · QTY 1</p>
+          <p class="cart-item-price">₹1,999</p>
+        </div>
+        <div class="cart-item-actions">
+          <div class="qty-control"><button>−</button><input type="number" value="1" min="1"><button>+</button></div>
+          <button class="cart-remove" title="Remove">×</button>
+        </div>
+      </div>
+
+      <div style="margin-top:2.5rem;display:flex;gap:1rem;flex-wrap:wrap">
+        <a href="collections.html" class="btn-ghost">← Continue Shopping</a>
+        <button class="btn-ghost" style="border-color:rgba(232,136,136,.3);color:#e88">Empty Bag</button>
+      </div>
+    </div>
+
+    <!-- SUMMARY -->
+    <aside class="cart-summary reveal-right">
+      <h3>Order Summary</h3>
+
+      <div class="cart-summary-row">
+        <span>Subtotal (3 items)</span>
+        <strong>₹7,097</strong>
+      </div>
+      <div class="cart-summary-row">
+        <span>Shipping</span>
+        <strong>Free over ₹999</strong>
+      </div>
+      <div class="cart-summary-row">
+        <span>GST (3%)</span>
+        <strong>₹213</strong>
+      </div>
+      <div class="cart-summary-row" style="color:var(--gold)">
+        <span>Discount (FIRSTTIME10)</span>
+        <strong>−₹710</strong>
+      </div>
+
+      <div class="coupon-row">
+        <input type="text" placeholder="Enter coupon code">
+        <button onclick="showToast('Coupon applied — ₹710 off!')">Apply</button>
+      </div>
+
+      <div class="cart-summary-row total">
+        <span>Total</span>
+        <span>₹6,600</span>
+      </div>
+
+      <p style="font-family:var(--font-sans);font-size:.62rem;letter-spacing:.15em;color:rgba(250,246,240,.4);margin-top:1rem;line-height:1.7">Inclusive of all taxes · Free shipping on this order · 7-day easy returns</p>
+
+      <button class="btn-primary" onclick="showToast('Redirecting to secure checkout…')">Proceed to Checkout</button>
+
+      <div style="margin-top:1.5rem;padding-top:1.5rem;border-top:1px solid rgba(201,169,110,.1);text-align:center">
+        <p style="font-family:var(--font-sans);font-size:.6rem;letter-spacing:.25em;text-transform:uppercase;color:rgba(250,246,240,.4);margin-bottom:.7rem">We Accept</p>
+        <div class="payment-icons" style="justify-content:center;flex-wrap:wrap">
+          <span class="payment-icon">VISA</span><span class="payment-icon">MC</span>
+          <span class="payment-icon">UPI</span><span class="payment-icon">RZP</span>
+          <span class="payment-icon">COD</span><span class="payment-icon">EMI</span>
+        </div>
+      </div>
+
+      <div style="margin-top:1.5rem;padding-top:1.5rem;border-top:1px solid rgba(201,169,110,.1);display:flex;gap:1rem;align-items:center;justify-content:center;flex-wrap:wrap">
+        <span style="font-family:var(--font-sans);font-size:.62rem;letter-spacing:.15em;color:rgba(250,246,240,.4);display:flex;align-items:center;gap:.4rem">⛨ SSL Secured</span>
+        <span style="font-family:var(--font-sans);font-size:.62rem;letter-spacing:.15em;color:rgba(250,246,240,.4);display:flex;align-items:center;gap:.4rem">↺ 7-day Returns</span>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<!-- RECOMMENDED -->
+<section class="bestsellers">
+  <div class="bs-header reveal">
+    <div><span class="section-label">You'll Love These Too</span><h2 class="section-title">Pair It <em>With</em></h2></div>
+    <a href="collections.html" class="btn-ghost">View All →</a>
+  </div>
+  <div class="products-grid stagger">
+    <a href="product.html" class="product-card">
+      <div class="product-img-wrap">
+        <img src="https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=600&q=80&auto=format&fit=crop" alt="" loading="lazy" decoding="async">
+        <img class="product-img-back" src="https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=600&q=80&auto=format&fit=crop" alt="" loading="lazy" decoding="async">
+        <div class="product-actions"><button onclick="event.preventDefault();addToCart('Sparkling Choker','₹3,199')">Add to Bag</button><button class="wishlist-btn">♡</button></div>
+      </div>
+      <div class="product-info"><h3 class="product-name">Sparkling Silver Choker</h3><p class="product-price">₹3,199.00</p></div>
+    </a>
+    <a href="product.html" class="product-card">
+      <div class="product-img-wrap">
+        <img src="https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=600&q=80&auto=format&fit=crop" alt="" loading="lazy" decoding="async">
+        <img class="product-img-back" src="https://images.unsplash.com/photo-1568569350062-ebfa3cb195df?w=600&q=80&auto=format&fit=crop" alt="" loading="lazy" decoding="async">
+        <div class="product-actions"><button onclick="event.preventDefault();addToCart('Infinity Chain Necklace','₹2,599')">Add to Bag</button><button class="wishlist-btn">♡</button></div>
+      </div>
+      <div class="product-info"><h3 class="product-name">Infinity Chain Necklace</h3><p class="product-price">₹2,599.00</p></div>
+    </a>
+    <a href="product.html" class="product-card">
+      <div class="product-img-wrap">
+        <img src="https://images.unsplash.com/photo-1568569350062-ebfa3cb195df?w=600&q=80&auto=format&fit=crop" alt="" loading="lazy" decoding="async">
+        <img class="product-img-back" src="https://images.unsplash.com/photo-1612722432474-b971cdcea546?w=600&q=80&auto=format&fit=crop" alt="" loading="lazy" decoding="async">
+        <div class="product-actions"><button onclick="event.preventDefault();addToCart('Infinity Bracelet','₹2,199')">Add to Bag</button><button class="wishlist-btn">♡</button></div>
+      </div>
+      <div class="product-info"><h3 class="product-name">Infinity Bracelet</h3><p class="product-price">₹2,199.00</p></div>
+    </a>
+    <a href="product.html" class="product-card">
+      <div class="product-img-wrap">
+        <img src="https://images.unsplash.com/photo-1612722432474-b971cdcea546?w=600&q=80&auto=format&fit=crop" alt="" loading="lazy" decoding="async">
+        <img class="product-img-back" src="https://images.unsplash.com/photo-1601121141461-9d6647bca1ed?w=600&q=80&auto=format&fit=crop" alt="" loading="lazy" decoding="async">
+        <div class="product-actions"><button onclick="event.preventDefault();addToCart('Brighta Earrings','₹1,999')">Add to Bag</button><button class="wishlist-btn">♡</button></div>
+      </div>
+      <div class="product-info"><h3 class="product-name">Brighta Earrings</h3><p class="product-price">₹1,999.00</p></div>
+    </a>
+  </div>
+</section>
+
+<div class="trust-strip">
+  <div class="trust-grid reveal">
+    <div class="trust-item"><div class="trust-icon">⛟</div><div class="trust-name">Free Shipping</div><div class="trust-desc">On orders above ₹999</div></div>
+    <div class="trust-item"><div class="trust-icon">◆</div><div class="trust-name">Anti-Tarnish</div><div class="trust-desc">Long-lasting brilliance</div></div>
+    <div class="trust-item"><div class="trust-icon">↺</div><div class="trust-name">Easy Returns</div><div class="trust-desc">7-day return policy</div></div>
+    <div class="trust-item"><div class="trust-icon">⛨</div><div class="trust-name">Secure Payment</div><div class="trust-desc">100% safe checkout</div></div>
+  </div>
+</div>
+
+<footer class="site-footer">
+  <div class="footer-grid">
+    <div>
+      <a href="index.html" class="footer-logo">OORMII</a>
+      <p class="footer-tagline">Handcrafted jewellery for the modern woman — designed to be worn every day and treasured forever.</p>
+      <div class="social-links"><a href="#" class="social-link">◎</a><a href="#" class="social-link">f</a><a href="#" class="social-link">▷</a><a href="#" class="social-link">𝕏</a><a href="#" class="social-link">P</a></div>
+    </div>
+    <div><p class="footer-col-title">Shop</p><ul class="footer-links"><li><a href="collections.html">Necklaces</a></li><li><a href="collections.html">Earrings</a></li><li><a href="collections.html">Bracelets</a></li><li><a href="collections.html">Rings</a></li></ul></div>
+    <div><p class="footer-col-title">Help</p><ul class="footer-links"><li><a href="contact.html">Track Order</a></li><li><a href="faq.html">Shipping</a></li><li><a href="faq.html">Returns</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+    <div><p class="footer-col-title">Company</p><ul class="footer-links"><li><a href="about.html">About</a></li><li><a href="blog.html">Journal</a></li><li><a href="faq.html">Privacy</a></li><li><a href="faq.html">Terms</a></li></ul></div>
+    <div><p class="footer-col-title">Reach Us</p><p class="footer-contact-info">✉ hello@oormiijewels.in<br>📞 +91 98765 43210<br>⌖ Mumbai, India</p></div>
+  </div>
+  <div class="footer-bottom">
+    <p class="footer-copy">© 2026 Oormii Jewels. All rights reserved.</p>
+    <div class="payment-icons"><span class="payment-icon">VISA</span><span class="payment-icon">MC</span><span class="payment-icon">UPI</span><span class="payment-icon">RZP</span></div>
+  </div>
+</footer>
+
+<a href="https://wa.me/919876543210" id="whatsapp-float" target="_blank">✉</a>
+<button id="back-to-top">↑</button>
+
+<script src="assets/js/main.js"></script>
+</body>
+</html>

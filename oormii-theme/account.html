@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#0d0e11">
+<meta name="description" content="Sign in or create your Oormii account to track orders, save your wishlist, and access exclusive perks.">
+<title>Account — Oormii Jewels</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Italiana&family=Josefin+Sans:wght@200;300;400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/main.css">
+</head>
+<body>
+
+<div id="cursor"></div><div id="cursor-ring"></div><div id="scroll-bar"></div>
+
+<div id="loader"><div class="loader-logo">OORMII</div><div class="loader-bar"></div><div class="loader-tag">Welcome</div></div>
+<div id="toast"></div>
+
+<div id="search-overlay">
+  <button class="search-close" onclick="closeSearch()">×</button>
+  <div class="search-input-wrap"><span class="search-icon">⌕</span><input type="text" placeholder="Search…" id="search-input"></div>
+</div>
+
+<div class="drawer-overlay" id="drawer-overlay" onclick="closeCart()"></div>
+<div id="cart-drawer">
+  <div class="drawer-header"><span class="drawer-title">Your Bag</span><button class="drawer-close" onclick="closeCart()">×</button></div>
+  <div class="drawer-empty"><div class="drawer-empty-icon">◇</div><p>Your bag is beautifully empty</p></div>
+  <div class="drawer-footer"><div class="drawer-total"><span>Subtotal</span><span>₹0.00</span></div><a href="cart.html" class="btn-primary" style="display:flex;justify-content:center;width:100%">View Cart</a></div>
+</div>
+
+<div class="mobile-nav" id="mobile-nav">
+  <a href="index.html">Home</a><a href="collections.html">Collections</a><a href="about.html">Our Story</a>
+  <a href="blog.html">Journal</a><a href="contact.html">Contact</a><a href="faq.html">FAQ</a><a href="account.html">Account</a>
+</div>
+
+<div class="announcement"><strong>FREE shipping</strong> on orders above ₹999  ·  Use code <strong>FIRSTTIME10</strong> for 10% off</div>
+
+<nav class="main-nav solid" id="main-nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">OORMII</a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="collections.html">Collections</a></li>
+      <li><a href="about.html">Our Story</a></li>
+      <li><a href="blog.html">Journal</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button onclick="openSearch()">⌕</button>
+      <a href="account.html" class="active" style="color:var(--gold)">◯</a>
+      <button onclick="openCart()">⛂<span class="cart-count">0</span></button>
+      <button class="hamburger" onclick="toggleNav()" id="hamburger"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</nav>
+
+<section class="auth-section">
+  <div class="auth-card reveal-scale">
+    <div class="auth-tabs">
+      <button class="auth-tab active" data-target="login-form">Sign In</button>
+      <button class="auth-tab" data-target="register-form">Create Account</button>
+    </div>
+
+    <!-- LOGIN -->
+    <form class="auth-form" id="login-form" onsubmit="event.preventDefault();showToast('Welcome back!')">
+      <h2 class="section-title" style="font-size:1.6rem;margin-bottom:.4rem;text-align:center">Welcome <em>back</em></h2>
+      <p style="font-family:var(--font-sans);font-size:.72rem;letter-spacing:.1em;color:rgba(250,246,240,.5);text-align:center;margin-bottom:2rem;line-height:1.7">Sign in to track orders, manage your wishlist, and check out faster.</p>
+
+      <div class="form-group">
+        <input type="email" class="form-input" placeholder=" " required>
+        <label class="form-label">Email Address</label>
+      </div>
+      <div class="form-group">
+        <input type="password" class="form-input" placeholder=" " required>
+        <label class="form-label">Password</label>
+      </div>
+
+      <div class="auth-meta">
+        <label><input type="checkbox"> Remember me</label>
+        <a href="#">Forgot password?</a>
+      </div>
+
+      <button type="submit" class="btn-primary">Sign In →</button>
+
+      <div class="auth-divider"><span>OR</span></div>
+
+      <div class="social-auth">
+        <button type="button" class="social-auth-btn">G  Google</button>
+        <button type="button" class="social-auth-btn">f  Facebook</button>
+      </div>
+
+      <p style="font-family:var(--font-sans);font-size:.72rem;letter-spacing:.05em;color:rgba(250,246,240,.5);text-align:center;margin-top:2rem">
+        New to Oormii?  <a href="#" onclick="document.querySelector('[data-target=register-form]').click();return false" style="color:var(--gold);text-decoration:none">Create an account</a>
+      </p>
+    </form>
+
+    <!-- REGISTER -->
+    <form class="auth-form" id="register-form" style="display:none" onsubmit="event.preventDefault();showToast('Welcome to Oormii — your 10% off code is in your inbox.')">
+      <h2 class="section-title" style="font-size:1.6rem;margin-bottom:.4rem;text-align:center">Create your <em>account</em></h2>
+      <p style="font-family:var(--font-sans);font-size:.72rem;letter-spacing:.1em;color:rgba(250,246,240,.5);text-align:center;margin-bottom:2rem;line-height:1.7">Plus a 10% off welcome code, just for joining the Circle.</p>
+
+      <div class="form-row">
+        <div class="form-group">
+          <input type="text" class="form-input" placeholder=" " required>
+          <label class="form-label">First Name</label>
+        </div>
+        <div class="form-group">
+          <input type="text" class="form-input" placeholder=" " required>
+          <label class="form-label">Last Name</label>
+        </div>
+      </div>
+      <div class="form-group">
+        <input type="email" class="form-input" placeholder=" " required>
+        <label class="form-label">Email Address</label>
+      </div>
+      <div class="form-group">
+        <input type="tel" class="form-input" placeholder=" ">
+        <label class="form-label">Phone (optional)</label>
+      </div>
+      <div class="form-group">
+        <input type="password" class="form-input" placeholder=" " required>
+        <label class="form-label">Password</label>
+      </div>
+
+      <div class="auth-meta" style="margin-top:1.4rem">
+        <label style="font-size:.65rem;line-height:1.6"><input type="checkbox" required> I agree to the <a href="faq.html">Terms</a> & <a href="faq.html">Privacy</a></label>
+      </div>
+
+      <button type="submit" class="btn-primary">Create Account →</button>
+
+      <div class="auth-divider"><span>OR</span></div>
+
+      <div class="social-auth">
+        <button type="button" class="social-auth-btn">G  Google</button>
+        <button type="button" class="social-auth-btn">f  Facebook</button>
+      </div>
+
+      <p style="font-family:var(--font-sans);font-size:.72rem;letter-spacing:.05em;color:rgba(250,246,240,.5);text-align:center;margin-top:2rem">
+        Already have an account?  <a href="#" onclick="document.querySelector('[data-target=login-form]').click();return false" style="color:var(--gold);text-decoration:none">Sign in</a>
+      </p>
+    </form>
+  </div>
+</section>
+
+<!-- BENEFITS -->
+<section class="craft-strip">
+  <div class="cat-header reveal" style="text-align:center;margin-bottom:4rem">
+    <span class="section-label">Why Join</span>
+    <h2 class="section-title">The little <em>perks</em></h2>
+  </div>
+  <div class="craft-grid stagger">
+    <div class="craft-item">
+      <div class="craft-num">01</div>
+      <h3 class="craft-title">10% Welcome Code</h3>
+      <p class="craft-desc">Sign up and get a discount code waiting in your inbox — use it on your first piece.</p>
+    </div>
+    <div class="craft-item">
+      <div class="craft-num">02</div>
+      <h3 class="craft-title">Early Access</h3>
+      <p class="craft-desc">Members see new edits and limited drops 48 hours before the rest of the world.</p>
+    </div>
+    <div class="craft-item">
+      <div class="craft-num">03</div>
+      <h3 class="craft-title">Faster Checkout</h3>
+      <p class="craft-desc">Saved addresses, saved payment methods. Two clicks from cart to confirmation.</p>
+    </div>
+    <div class="craft-item">
+      <div class="craft-num">04</div>
+      <h3 class="craft-title">Wishlist & Order Tracking</h3>
+      <p class="craft-desc">Save favourites for later. Track orders live. See your full purchase history.</p>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="footer-grid">
+    <div>
+      <a href="index.html" class="footer-logo">OORMII</a>
+      <p class="footer-tagline">Handcrafted jewellery for the modern woman — designed to be worn every day and treasured forever.</p>
+      <div class="social-links"><a href="#" class="social-link">◎</a><a href="#" class="social-link">f</a><a href="#" class="social-link">▷</a><a href="#" class="social-link">𝕏</a><a href="#" class="social-link">P</a></div>
+    </div>
+    <div><p class="footer-col-title">Shop</p><ul class="footer-links"><li><a href="collections.html">Necklaces</a></li><li><a href="collections.html">Earrings</a></li><li><a href="collections.html">Bracelets</a></li><li><a href="collections.html">Rings</a></li></ul></div>
+    <div><p class="footer-col-title">Help</p><ul class="footer-links"><li><a href="contact.html">Track Order</a></li><li><a href="faq.html">Shipping</a></li><li><a href="faq.html">Returns</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+    <div><p class="footer-col-title">Company</p><ul class="footer-links"><li><a href="about.html">About</a></li><li><a href="blog.html">Journal</a></li><li><a href="faq.html">Privacy</a></li><li><a href="faq.html">Terms</a></li></ul></div>
+    <div><p class="footer-col-title">Reach Us</p><p class="footer-contact-info">✉ hello@oormiijewels.in<br>📞 +91 98765 43210<br>⌖ Mumbai, India</p></div>
+  </div>
+  <div class="footer-bottom">
+    <p class="footer-copy">© 2026 Oormii Jewels. All rights reserved.</p>
+    <div class="payment-icons"><span class="payment-icon">VISA</span><span class="payment-icon">MC</span><span class="payment-icon">UPI</span><span class="payment-icon">RZP</span></div>
+  </div>
+</footer>
+
+<a href="https://wa.me/919876543210" id="whatsapp-float" target="_blank">✉</a>
+<button id="back-to-top">↑</button>
+
+<script src="assets/js/main.js"></script>
+</body>
+</html>

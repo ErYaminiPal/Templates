@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#0d0e11">
+<meta name="description" content="Frequently asked questions about Oormii Jewels — shipping, returns, sizing, care, and more.">
+<title>FAQ — Oormii Jewels</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Italiana&family=Josefin+Sans:wght@200;300;400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/main.css">
+</head>
+<body>
+
+<div id="cursor"></div><div id="cursor-ring"></div><div id="scroll-bar"></div>
+
+<div id="loader"><div class="loader-logo">OORMII</div><div class="loader-bar"></div><div class="loader-tag">Loading help</div></div>
+<div id="toast"></div>
+
+<div id="search-overlay">
+  <button class="search-close" onclick="closeSearch()">×</button>
+  <div class="search-input-wrap"><span class="search-icon">⌕</span><input type="text" placeholder="Search FAQs…" id="search-input"></div>
+</div>
+
+<div class="drawer-overlay" id="drawer-overlay" onclick="closeCart()"></div>
+<div id="cart-drawer">
+  <div class="drawer-header"><span class="drawer-title">Your Bag</span><button class="drawer-close" onclick="closeCart()">×</button></div>
+  <div class="drawer-empty"><div class="drawer-empty-icon">◇</div><p>Your bag is beautifully empty</p></div>
+  <div class="drawer-footer"><div class="drawer-total"><span>Subtotal</span><span>₹0.00</span></div><a href="cart.html" class="btn-primary" style="display:flex;justify-content:center;width:100%">View Cart</a></div>
+</div>
+
+<div class="mobile-nav" id="mobile-nav">
+  <a href="index.html">Home</a><a href="collections.html">Collections</a><a href="about.html">Our Story</a>
+  <a href="blog.html">Journal</a><a href="contact.html">Contact</a><a href="faq.html">FAQ</a><a href="account.html">Account</a>
+</div>
+
+<div class="announcement"><strong>FREE shipping</strong> on orders above ₹999  ·  Use code <strong>FIRSTTIME10</strong> for 10% off</div>
+
+<nav class="main-nav solid" id="main-nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">OORMII</a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="collections.html">Collections</a></li>
+      <li><a href="about.html">Our Story</a></li>
+      <li><a href="blog.html">Journal</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button onclick="openSearch()">⌕</button>
+      <a href="account.html">◯</a>
+      <button onclick="openCart()">⛂<span class="cart-count">0</span></button>
+      <button class="hamburger" onclick="toggleNav()" id="hamburger"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</nav>
+
+<header class="page-header">
+  <div class="page-header-content">
+    <nav class="breadcrumb"><a href="index.html">Home</a><span class="breadcrumb-sep">◆</span><span>FAQ</span></nav>
+    <h1 class="page-title" data-split>Questions, gently answered</h1>
+    <p class="page-sub reveal">Everything you might wonder about ordering, sizing, caring for, and returning your Oormii pieces.</p>
+  </div>
+</header>
+
+<section class="faq-section">
+  <div class="faq-container">
+    <div class="faq-tabs reveal">
+      <button class="faq-tab active" data-cat="all">All</button>
+      <button class="faq-tab" data-cat="shipping">Shipping</button>
+      <button class="faq-tab" data-cat="returns">Returns</button>
+      <button class="faq-tab" data-cat="orders">Orders</button>
+      <button class="faq-tab" data-cat="product">Product</button>
+      <button class="faq-tab" data-cat="care">Care</button>
+      <button class="faq-tab" data-cat="payment">Payment</button>
+    </div>
+
+    <div class="reveal">
+      <div class="faq-item open" data-cat="shipping">
+        <div class="faq-question">How long does shipping take? <span class="faq-icon">+</span></div>
+        <div class="faq-answer"><p>All orders are dispatched within 2–3 business days. Standard delivery typically takes 3–5 days within metros, and 5–8 days for the rest of India. Express delivery is available at checkout for an additional fee.</p></div>
+      </div>
+      <div class="faq-item" data-cat="shipping">
+        <div class="faq-question">Is shipping really free? <span class="faq-icon">+</span></div>
+        <div class="faq-answer"><p>Free shipping on all orders above ₹999, anywhere in India. Below that, a flat ₹99 shipping fee applies. International shipping is calculated at checkout and varies by destination.</p></div>
+      </div>
+      <div class="faq-item" data-cat="shipping">
+        <div class="faq-question">Do you ship internationally? <span class="faq-icon">+</span></div>
+        <div class="faq-answer"><p>Yes — we ship to most countries. Rates and delivery times are calculated at checkout. Note that customs duties, where applicable, are the buyer's responsibility.</p></div>
+      </div>
+
+      <div class="faq-item" data-cat="returns">
+        <div class="faq-question">What is your return policy? <span class="faq-icon">+</span></div>
+        <div class="faq-answer"><p>We offer a no-questions-asked 7-day return window from delivery. Items must be unworn and in original packaging with all tags. Refunds are processed within 5–7 business days of receiving the return.</p></div>
+      </div>
+      <div class="faq-item" data-cat="returns">
+        <div class="faq-question">How do I initiate a return or exchange? <span class="faq-icon">+</span></div>
+        <div class="faq-answer"><p>Sign in to your Oormii account and click "Return / Exchange" next to the order, or email us at hello@oormiijewels.in with your order number. We'll guide you the rest of the way.</p></div>
+      </div>
+      <div class="faq-item" data-cat="returns">
+        <div class="faq-question">Are sale or discounted items returnable? <span class="faq-icon">+</span></div>
+        <div class="faq-answer"><p>Yes, with one small exception — items marked "Final Sale" cannot be returned or exchanged. This will always be clearly labelled at the time of purchase.</p></div>
+      </div>
+
+      <div class="faq-item" data-cat="orders">
+        <div class="faq-question">Can I modify or cancel my order after placing it? <span class="faq-icon">+</span></div>
+        <div class="faq-answer"><p>Yes — within 12 hours of placing your order. After that, our atelier has likely begun preparing the piece. Email us as soon as possible and we'll do our best.</p></div>
+      </div>
+      <div class="faq-item" data-cat="orders">
+        <div class="faq-question">How do I track my order? <span class="faq-icon">+</span></div>
+        <div class="faq-answer"><p>You'll receive a tracking link by email and SMS the moment your order ships. You can also see live status from your Oormii account at any time.</p></div>
+      </div>
+
+      <div class="faq-item" data-cat="product">
+        <div class="faq-question">What does "anti-tarnish" actually mean? <span class="faq-icon">+</span></div>
+        <div class="faq-answer"><p>Every Oormii piece is sealed with a thin rhodium layer. Rhodium is non-reactive — meaning your jewellery stays luminous through humidity, perfume, and time. With basic care, you'll see no tarnishing for years.</p></div>
+      </div>
+      <div class="faq-item" data-cat="product">
+        <div class="faq-question">Is the jewellery hypoallergenic? <span class="faq-icon">+</span></div>
+        <div class="faq-answer"><p>Yes. All our pieces are 925 sterling silver and nickel-free, suitable for most sensitive skin. If you've reacted to other costume jewellery in the past, you should be safe with Oormii.</p></div>
+      </div>
+      <div class="faq-item" data-cat="product">
+        <div class="faq-question">Do you offer custom or bridal pieces? <span class="faq-icon">+</span></div>
+        <div class="faq-answer"><p>Yes. We work on a small number of custom pieces every month. Email hello@oormiijewels.in with your idea and timeline; we'll be in touch within 48 hours with a sketch and quote.</p></div>
+      </div>
+
+      <div class="faq-item" data-cat="care">
+        <div class="faq-question">How do I care for my Oormii jewellery? <span class="faq-icon">+</span></div>
+        <div class="faq-answer"><p>Three rules: (1) the last thing on, the first thing off; (2) avoid contact with perfume, lotion, and chlorine; (3) store in the velvet pouch we send with your order. The cleaning cloth in the box handles the rest.</p></div>
+      </div>
+      <div class="faq-item" data-cat="care">
+        <div class="faq-question">Can I shower or swim wearing my pieces? <span class="faq-icon">+</span></div>
+        <div class="faq-answer"><p>You can shower briefly without harm, but please remove before swimming — pool chemicals and salt water will, over time, dull the shine. A few minutes in plain water is fine; a full afternoon in the pool is not.</p></div>
+      </div>
+
+      <div class="faq-item" data-cat="payment">
+        <div class="faq-question">What payment methods do you accept? <span class="faq-icon">+</span></div>
+        <div class="faq-answer"><p>All major credit/debit cards, UPI, net banking, popular wallets, and Cash-on-Delivery (for orders below ₹3,000). All payments are processed securely through Razorpay with bank-grade encryption.</p></div>
+      </div>
+      <div class="faq-item" data-cat="payment">
+        <div class="faq-question">Is my payment information secure? <span class="faq-icon">+</span></div>
+        <div class="faq-answer"><p>Absolutely. We never store card details on our servers. All transactions are PCI-DSS compliant and routed directly to our payment partner Razorpay.</p></div>
+      </div>
+      <div class="faq-item" data-cat="payment">
+        <div class="faq-question">Do you offer EMI? <span class="faq-icon">+</span></div>
+        <div class="faq-answer"><p>Yes — for orders above ₹3,000, EMI options on most major credit cards are available at checkout, including no-cost EMI on select banks.</p></div>
+      </div>
+    </div>
+
+    <!-- HELP CTA -->
+    <div class="contact-info-card reveal" style="margin-top:4rem;text-align:center;flex-direction:column;align-items:center">
+      <h3 style="font-family:var(--font-serif);font-size:2rem;color:var(--gold);margin-bottom:.6rem">Still have questions?</h3>
+      <p style="font-family:var(--font-serif);font-size:1.05rem;line-height:1.7;color:rgba(250,246,240,.6);max-width:500px">We answer every message — usually within 12 hours. Reach out by email, phone, or WhatsApp.</p>
+      <div style="display:flex;gap:1rem;flex-wrap:wrap;justify-content:center">
+        <a href="contact.html" class="btn-primary">Contact Us</a>
+        <a href="https://wa.me/919876543210" class="btn-ghost" target="_blank">WhatsApp →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="newsletter">
+  <div class="newsletter-inner">
+    <span class="section-label">Join the Circle</span>
+    <h2 class="section-title">Get 10% Off Your<br><em>First Order</em></h2>
+    <div class="newsletter-form"><input type="email" placeholder="your@email.com" id="nl-email"><button onclick="subscribeNewsletter()">Subscribe</button></div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="footer-grid">
+    <div>
+      <a href="index.html" class="footer-logo">OORMII</a>
+      <p class="footer-tagline">Handcrafted jewellery for the modern woman — designed to be worn every day and treasured forever.</p>
+      <div class="social-links"><a href="#" class="social-link">◎</a><a href="#" class="social-link">f</a><a href="#" class="social-link">▷</a><a href="#" class="social-link">𝕏</a><a href="#" class="social-link">P</a></div>
+    </div>
+    <div><p class="footer-col-title">Shop</p><ul class="footer-links"><li><a href="collections.html">Necklaces</a></li><li><a href="collections.html">Earrings</a></li><li><a href="collections.html">Bracelets</a></li><li><a href="collections.html">Rings</a></li></ul></div>
+    <div><p class="footer-col-title">Help</p><ul class="footer-links"><li><a href="contact.html">Track Order</a></li><li><a href="faq.html">Shipping</a></li><li><a href="faq.html">Returns</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+    <div><p class="footer-col-title">Company</p><ul class="footer-links"><li><a href="about.html">About</a></li><li><a href="blog.html">Journal</a></li><li><a href="faq.html">Privacy</a></li><li><a href="faq.html">Terms</a></li></ul></div>
+    <div><p class="footer-col-title">Reach Us</p><p class="footer-contact-info">✉ hello@oormiijewels.in<br>📞 +91 98765 43210<br>⌖ Mumbai, India</p></div>
+  </div>
+  <div class="footer-bottom">
+    <p class="footer-copy">© 2026 Oormii Jewels. All rights reserved.</p>
+    <div class="payment-icons"><span class="payment-icon">VISA</span><span class="payment-icon">MC</span><span class="payment-icon">UPI</span><span class="payment-icon">RZP</span></div>
+  </div>
+</footer>
+
+<a href="https://wa.me/919876543210" id="whatsapp-float" target="_blank">✉</a>
+<button id="back-to-top">↑</button>
+
+<script src="assets/js/main.js"></script>
+</body>
+</html>

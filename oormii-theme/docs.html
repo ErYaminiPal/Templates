@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#0d0e11">
+<meta name="description" content="Oormii theme styleguide — design tokens, components, customisation reference.">
+<title>Styleguide — Oormii Theme</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Italiana&family=Josefin+Sans:wght@200;300;400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/main.css">
+<style>
+  .docs-section { padding: 4rem 5vw; max-width: 1300px; margin: 0 auto; }
+  .docs-section + .docs-section { border-top: 1px solid rgba(201,169,110,.08); }
+  .docs-h { font-family: var(--font-serif); font-weight: 300; font-size: clamp(1.6rem,3vw,2.4rem); margin-bottom: .5rem; color: var(--cream); }
+  .docs-h em { color: var(--gold); font-style: italic; }
+  .docs-sub { font-family: var(--font-sans); font-size: .8rem; letter-spacing: .05em; color: rgba(250,246,240,.5); margin-bottom: 2.5rem; line-height: 1.7; max-width: 640px; }
+  .swatch-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); gap: 1rem; }
+  .swatch { padding: 1.5rem 1rem 1rem; border: 1px solid rgba(201,169,110,.1); border-radius: 4px; }
+  .swatch-color { aspect-ratio: 1.6; border-radius: 4px; margin-bottom: .8rem; border: 1px solid rgba(201,169,110,.1); }
+  .swatch-name { font-family: var(--font-sans); font-size: .65rem; letter-spacing: .25em; text-transform: uppercase; color: var(--gold); margin-bottom: .3rem; }
+  .swatch-hex { font-family: var(--font-sans); font-size: .8rem; color: var(--cream); }
+  .swatch-token { font-family: var(--font-sans); font-size: .62rem; color: rgba(250,246,240,.4); margin-top: .2rem; }
+  .type-row { padding: 1.4rem 0; border-bottom: 1px solid rgba(201,169,110,.08); display: grid; grid-template-columns: 200px 1fr; gap: 1.5rem; align-items: baseline; }
+  .type-label { font-family: var(--font-sans); font-size: .6rem; letter-spacing: .3em; text-transform: uppercase; color: var(--gold); }
+  pre { background: rgba(201,169,110,.05); border: 1px solid rgba(201,169,110,.1); border-radius: 4px; padding: 1.2rem; overflow-x: auto; font-family: 'SF Mono', Menlo, monospace; font-size: .75rem; line-height: 1.7; color: rgba(250,246,240,.85); margin: 1rem 0; }
+  pre .k { color: var(--gold); }
+  pre .v { color: var(--gold-light); }
+  pre .c { color: rgba(250,246,240,.4); font-style: italic; }
+  .demo-row { padding: 2rem 0; border-bottom: 1px solid rgba(201,169,110,.08); display: grid; grid-template-columns: 220px 1fr; gap: 2rem; align-items: center; }
+  .demo-row:last-child { border-bottom: 0; }
+  .demo-label { font-family: var(--font-sans); font-size: .68rem; letter-spacing: .25em; text-transform: uppercase; color: rgba(250,246,240,.55); }
+  .demo-label code { font-size: .7rem; color: var(--gold); display: block; margin-top: .4rem; letter-spacing: .05em; text-transform: none; font-family: 'SF Mono', Menlo, monospace; }
+  .demo-area { display: flex; gap: 1rem; align-items: center; flex-wrap: wrap; }
+  .toc { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 1rem; margin-bottom: 3rem; }
+  .toc a {
+    padding: 1.2rem 1.4rem; border: 1px solid rgba(201,169,110,.15);
+    border-radius: 4px; text-decoration: none; color: var(--cream);
+    font-family: var(--font-serif); font-size: 1rem;
+    display: flex; justify-content: space-between; align-items: center;
+    transition: all .35s var(--ease-luxury);
+  }
+  .toc a:hover { border-color: var(--gold); color: var(--gold); transform: translateY(-3px); }
+  .toc a span { font-family: var(--font-sans); font-size: .68rem; color: var(--gold); letter-spacing: .15em; }
+  @media (max-width: 700px) {
+    .demo-row, .type-row { grid-template-columns: 1fr; gap: 1rem; }
+  }
+</style>
+</head>
+<body>
+
+<div id="cursor"></div><div id="cursor-ring"></div><div id="scroll-bar"></div>
+<div id="loader"><div class="loader-logo">OORMII</div><div class="loader-bar"></div><div class="loader-tag">Styleguide</div></div>
+<div id="toast"></div>
+
+<div id="search-overlay">
+  <button class="search-close" onclick="closeSearch()">×</button>
+  <div class="search-input-wrap"><span class="search-icon">⌕</span><input type="text" placeholder="Search…" id="search-input"></div>
+</div>
+
+<div class="drawer-overlay" id="drawer-overlay" onclick="closeCart()"></div>
+<div id="cart-drawer">
+  <div class="drawer-header"><span class="drawer-title">Your Bag</span><button class="drawer-close" onclick="closeCart()">×</button></div>
+  <div class="drawer-empty"><div class="drawer-empty-icon">◇</div><p>Your bag is beautifully empty</p></div>
+  <div class="drawer-footer"><div class="drawer-total"><span>Subtotal</span><span>₹0.00</span></div><a href="cart.html" class="btn-primary" style="display:flex;justify-content:center;width:100%">View Cart</a></div>
+</div>
+
+<div class="mobile-nav" id="mobile-nav">
+  <a href="index.html">Home</a><a href="collections.html">Collections</a><a href="about.html">Our Story</a>
+  <a href="blog.html">Journal</a><a href="contact.html">Contact</a><a href="faq.html">FAQ</a><a href="docs.html">Styleguide</a>
+</div>
+
+<div class="announcement"><strong>Theme Documentation</strong>  ·  Live styleguide & component reference</div>
+
+<nav class="main-nav" id="main-nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">OORMII</a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="collections.html">Collections</a></li>
+      <li><a href="about.html">Our Story</a></li>
+      <li><a href="docs.html" class="active">Styleguide</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button onclick="openSearch()">⌕</button>
+      <a href="account.html">◯</a>
+      <button onclick="openCart()">⛂<span class="cart-count">0</span></button>
+      <button class="hamburger" onclick="toggleNav()" id="hamburger"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</nav>
+
+<header class="page-header">
+  <div class="page-header-content">
+    <nav class="breadcrumb"><a href="index.html">Home</a><span class="breadcrumb-sep">◆</span><span>Styleguide</span></nav>
+    <h1 class="page-title">Theme <em>Styleguide</em></h1>
+    <p class="page-sub">Design tokens, components, and customisation reference. Use this page as a living dictionary while you adapt the theme to your brand.</p>
+  </div>
+</header>
+
+<!-- TOC -->
+<section class="docs-section">
+  <h2 class="docs-h">Contents</h2>
+  <div class="toc" style="margin-top:2rem">
+    <a href="#colors">Colour Tokens <span>01</span></a>
+    <a href="#typography">Typography <span>02</span></a>
+    <a href="#buttons">Buttons <span>03</span></a>
+    <a href="#cards">Product Cards <span>04</span></a>
+    <a href="#forms">Forms <span>05</span></a>
+    <a href="#animations">Reveal Animations <span>06</span></a>
+    <a href="#breakpoints">Breakpoints <span>07</span></a>
+    <a href="#customise">Customisation <span>08</span></a>
+  </div>
+</section>
+
+<!-- COLORS -->
+<section class="docs-section" id="colors">
+  <h2 class="docs-h"><em>01.</em>  Colour Tokens</h2>
+  <p class="docs-sub">Every colour in the theme is driven by these CSS variables in <code style="color:var(--gold)">:root</code>. Change one — the entire site updates.</p>
+  <div class="swatch-grid">
+    <div class="swatch"><div class="swatch-color" style="background:var(--gold)"></div><div class="swatch-name">Gold</div><div class="swatch-hex">#c9a96e</div><div class="swatch-token">--gold</div></div>
+    <div class="swatch"><div class="swatch-color" style="background:var(--gold-light)"></div><div class="swatch-name">Gold Light</div><div class="swatch-hex">#e8d5b0</div><div class="swatch-token">--gold-light</div></div>
+    <div class="swatch"><div class="swatch-color" style="background:var(--gold-dark)"></div><div class="swatch-name">Gold Dark</div><div class="swatch-hex">#8b6914</div><div class="swatch-token">--gold-dark</div></div>
+    <div class="swatch"><div class="swatch-color" style="background:var(--champagne)"></div><div class="swatch-name">Champagne</div><div class="swatch-hex">#d8c39a</div><div class="swatch-token">--champagne</div></div>
+    <div class="swatch"><div class="swatch-color" style="background:var(--rose)"></div><div class="swatch-name">Rose</div><div class="swatch-hex">#e8c4a0</div><div class="swatch-token">--rose</div></div>
+    <div class="swatch"><div class="swatch-color" style="background:var(--ink)"></div><div class="swatch-name">Ink</div><div class="swatch-hex">#0d0e11</div><div class="swatch-token">--ink</div></div>
+    <div class="swatch"><div class="swatch-color" style="background:var(--ink-soft)"></div><div class="swatch-name">Ink Soft</div><div class="swatch-hex">#181a1f</div><div class="swatch-token">--ink-soft</div></div>
+    <div class="swatch"><div class="swatch-color" style="background:var(--slate)"></div><div class="swatch-name">Slate</div><div class="swatch-hex">#2c2e35</div><div class="swatch-token">--slate</div></div>
+    <div class="swatch"><div class="swatch-color" style="background:var(--cream)"></div><div class="swatch-name">Cream</div><div class="swatch-hex">#f5f3ee</div><div class="swatch-token">--cream</div></div>
+    <div class="swatch"><div class="swatch-color" style="background:var(--mist)"></div><div class="swatch-name">Mist</div><div class="swatch-hex">#ecebe5</div><div class="swatch-token">--mist</div></div>
+  </div>
+</section>
+
+<!-- TYPOGRAPHY -->
+<section class="docs-section" id="typography">
+  <h2 class="docs-h"><em>02.</em>  Typography</h2>
+  <p class="docs-sub">Three families: a serif for headings & prices, a display serif for occasional drama, a clean sans for everything else.</p>
+  <div>
+    <div class="type-row">
+      <span class="type-label">H1 · Display</span>
+      <span style="font-family:var(--font-serif);font-weight:300;font-size:clamp(2.5rem,5vw,4rem);line-height:1.05">Wear the <em style="color:var(--gold);font-style:italic">Light</em> Within</span>
+    </div>
+    <div class="type-row">
+      <span class="type-label">H2 · Section</span>
+      <span style="font-family:var(--font-serif);font-weight:300;font-size:clamp(2rem,4vw,3rem)">Best <em style="color:var(--gold);font-style:italic">Sellers</em></span>
+    </div>
+    <div class="type-row">
+      <span class="type-label">H3 · Card</span>
+      <span style="font-family:var(--font-serif);font-size:1.3rem;font-weight:400">Tear Drop Pendant Necklace</span>
+    </div>
+    <div class="type-row">
+      <span class="type-label">Body Serif</span>
+      <span style="font-family:var(--font-serif);font-size:1.05rem;line-height:1.85;color:rgba(250,246,240,.7)">A delicate teardrop in 925 sterling silver, sealed with our signature anti-tarnish layer.</span>
+    </div>
+    <div class="type-row">
+      <span class="type-label">Body Sans</span>
+      <span style="font-family:var(--font-sans);font-size:.85rem;line-height:1.85;color:rgba(250,246,240,.7)">Crafted from premium 925 sterling silver and sealed with a rhodium anti-tarnish layer.</span>
+    </div>
+    <div class="type-row">
+      <span class="type-label">Eyebrow Label</span>
+      <span class="section-label" style="margin-bottom:0">Browse by Type</span>
+    </div>
+    <div class="type-row">
+      <span class="type-label">Price</span>
+      <span class="product-price-detail" style="margin:0">₹2,499</span>
+    </div>
+  </div>
+</section>
+
+<!-- BUTTONS -->
+<section class="docs-section" id="buttons">
+  <h2 class="docs-h"><em>03.</em>  Buttons</h2>
+  <p class="docs-sub">Three button styles. All are magnetic on hover (desktop), have shine sweeps on primary, and gold accent transitions on ghost.</p>
+  <div class="demo-row">
+    <span class="demo-label">Primary <code>.btn-primary</code></span>
+    <div class="demo-area"><a href="#" class="btn-primary">Add to Bag</a><a href="#" class="btn-primary">Explore →</a></div>
+  </div>
+  <div class="demo-row">
+    <span class="demo-label">Ghost <code>.btn-ghost</code></span>
+    <div class="demo-area"><a href="#" class="btn-ghost">View All →</a><a href="#" class="btn-ghost">Continue</a></div>
+  </div>
+  <div class="demo-row">
+    <span class="demo-label">Link <code>.btn-link</code></span>
+    <div class="demo-area"><a href="#" class="btn-link">Read Article</a></div>
+  </div>
+  <div class="demo-row">
+    <span class="demo-label">Icon <code>.btn-icon</code></span>
+    <div class="demo-area"><button class="btn-icon">♡</button><button class="btn-icon">⤴</button></div>
+  </div>
+</section>
+
+<!-- PRODUCT CARDS -->
+<section class="docs-section" id="cards">
+  <h2 class="docs-h"><em>04.</em>  Product Cards</h2>
+  <p class="docs-sub">A single card pattern reused across home, collections, wishlist, cart, and PDP related sections. Hover reveals back-image swap, action bar, and quick-view button.</p>
+  <div class="products-grid stagger" style="grid-template-columns:repeat(3,1fr);max-width:900px">
+    <a href="product.html" class="product-card">
+      <div class="product-img-wrap">
+        <span class="product-badge">Best Seller</span>
+        <img src="https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=600&q=80&auto=format&fit=crop" alt="" loading="lazy">
+        <div class="product-actions"><button onclick="event.preventDefault();addToCart('Sample','₹2,499')">Add to Bag</button><button class="wishlist-btn">♡</button></div>
+      </div>
+      <div class="product-info"><h3 class="product-name">Tear Drop Pendant</h3><p class="product-price">₹2,499.00</p></div>
+    </a>
+    <a href="product.html" class="product-card">
+      <div class="product-img-wrap">
+        <span class="product-badge" style="background:var(--rose);color:var(--ink)">−20%</span>
+        <img src="https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=600&q=80&auto=format&fit=crop" alt="" loading="lazy">
+        <div class="product-actions"><button onclick="event.preventDefault();addToCart('Sample','₹1,599')">Add to Bag</button><button class="wishlist-btn">♡</button></div>
+      </div>
+      <div class="product-info"><h3 class="product-name">Prism Earrings</h3><p class="product-price"><span class="original">₹1,999.00</span>₹1,599.00</p></div>
+    </a>
+    <a href="product.html" class="product-card">
+      <div class="product-img-wrap">
+        <img src="https://images.unsplash.com/photo-1568569350062-ebfa3cb195df?w=600&q=80&auto=format&fit=crop" alt="" loading="lazy">
+        <div class="product-actions"><button onclick="event.preventDefault();addToCart('Sample','₹2,199')">Add to Bag</button><button class="wishlist-btn">♡</button></div>
+      </div>
+      <div class="product-info"><h3 class="product-name">Infinity Bracelet</h3><p class="product-price">₹2,199.00</p></div>
+    </a>
+  </div>
+</section>
+
+<!-- FORMS -->
+<section class="docs-section" id="forms">
+  <h2 class="docs-h"><em>05.</em>  Form Elements</h2>
+  <p class="docs-sub">Underline-style inputs with floating labels, gold focus state, dark transparent background.</p>
+  <div style="max-width:520px">
+    <div class="form-row">
+      <div class="form-group">
+        <input type="text" class="form-input" placeholder=" ">
+        <label class="form-label">First Name</label>
+      </div>
+      <div class="form-group">
+        <input type="text" class="form-input" placeholder=" ">
+        <label class="form-label">Last Name</label>
+      </div>
+    </div>
+    <div class="form-group">
+      <input type="email" class="form-input" placeholder=" ">
+      <label class="form-label">Email Address</label>
+    </div>
+    <div class="form-group">
+      <select class="form-select">
+        <option>Select a topic</option>
+        <option>General</option>
+        <option>Custom order</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <textarea class="form-textarea" placeholder=" "></textarea>
+      <label class="form-label">Message</label>
+    </div>
+  </div>
+</section>
+
+<!-- ANIMATIONS -->
+<section class="docs-section" id="animations">
+  <h2 class="docs-h"><em>06.</em>  Reveal Animations</h2>
+  <p class="docs-sub">Add one of these classes to any element. The IntersectionObserver in <code style="color:var(--gold)">main.js</code> will animate it into view as the user scrolls.</p>
+  <pre><span class="c">/* Fade up */</span>
+&lt;div <span class="k">class</span>=<span class="v">"reveal"</span>&gt;…&lt;/div&gt;
+
+<span class="c">/* Fade in from left / right */</span>
+&lt;div <span class="k">class</span>=<span class="v">"reveal-left"</span>&gt;…&lt;/div&gt;
+&lt;div <span class="k">class</span>=<span class="v">"reveal-right"</span>&gt;…&lt;/div&gt;
+
+<span class="c">/* Scale up */</span>
+&lt;div <span class="k">class</span>=<span class="v">"reveal-scale"</span>&gt;…&lt;/div&gt;
+
+<span class="c">/* Cascade through children */</span>
+&lt;ul <span class="k">class</span>=<span class="v">"stagger"</span>&gt;
+  &lt;li&gt;Item&lt;/li&gt;
+  &lt;li&gt;Item&lt;/li&gt;
+&lt;/ul&gt;
+
+<span class="c">/* Word-by-word headline reveal */</span>
+&lt;h1 <span class="k">data-split</span>&gt;Wear the light within&lt;/h1&gt;
+
+<span class="c">/* 3D tilt on mouse-move */</span>
+&lt;div <span class="k">data-tilt</span>&gt;…&lt;/div&gt;
+
+<span class="c">/* Animated counter on scroll-into-view */</span>
+&lt;span <span class="k">data-count</span>=<span class="v">"50000"</span> <span class="k">data-suffix</span>=<span class="v">"+"</span>&gt;0&lt;/span&gt;</pre>
+</section>
+
+<!-- BREAKPOINTS -->
+<section class="docs-section" id="breakpoints">
+  <h2 class="docs-h"><em>07.</em>  Breakpoints</h2>
+  <p class="docs-sub">Mobile-first wouldn't be honest — this theme is desktop-down. The four queries cover every device.</p>
+  <pre><span class="c">/* Default — desktop */</span>
+
+<span class="k">@media</span> (max-width: 1100px) {
+  <span class="c">/* Tablet landscape */</span>
+}
+
+<span class="k">@media</span> (max-width: 800px) {
+  <span class="c">/* Tablet portrait → mobile nav, custom cursor disabled */</span>
+}
+
+<span class="k">@media</span> (max-width: 500px) {
+  <span class="c">/* Phone — single-column hero CTAs, denser product grid */</span>
+}
+
+<span class="k">@media</span> (hover: none) and (pointer: coarse) {
+  <span class="c">/* Touch devices — product actions always visible, magnetic disabled */</span>
+}</pre>
+</section>
+
+<!-- CUSTOMISE -->
+<section class="docs-section" id="customise">
+  <h2 class="docs-h"><em>08.</em>  Customisation Cookbook</h2>
+  <p class="docs-sub">The fastest paths to making this theme look like your brand.</p>
+
+  <h3 style="font-family:var(--font-serif);font-size:1.4rem;color:var(--cream);margin:2rem 0 .5rem">Change the accent colour</h3>
+  <pre><span class="c">/* assets/css/main.css — top of file */</span>
+<span class="k">:root</span> {
+  <span class="k">--gold</span>: <span class="v">#b08d57</span>;       <span class="c">/* warmer rose-gold */</span>
+  <span class="k">--gold-light</span>: <span class="v">#d4b88a</span>;
+  <span class="k">--gold-dark</span>: <span class="v">#7a5c2e</span>;
+}</pre>
+
+  <h3 style="font-family:var(--font-serif);font-size:1.4rem;color:var(--cream);margin:2rem 0 .5rem">Switch to navy palette</h3>
+  <pre><span class="k">:root</span> {
+  <span class="k">--gold</span>: <span class="v">#d4b677</span>;
+  <span class="k">--ink</span>: <span class="v">#0a0e1a</span>;
+  <span class="k">--ink-soft</span>: <span class="v">#131a2e</span>;
+  <span class="k">--slate</span>: <span class="v">#2a3349</span>;
+}</pre>
+
+  <h3 style="font-family:var(--font-serif);font-size:1.4rem;color:var(--cream);margin:2rem 0 .5rem">Replace default images</h3>
+  <pre><span class="c">// 1. Find every image URL</span>
+grep <span class="v">"images.unsplash.com"</span> *.html
+
+<span class="c">// 2. Replace with your CDN — recommended sizes:</span>
+<span class="c">//    Hero          2000 × 1125 (16:9)</span>
+<span class="c">//    Cards         800 × 1066 (3:4)</span>
+<span class="c">//    Blog          800 × 600 (4:3)</span>
+<span class="c">//    Instagram     800 × 800 (1:1)</span></pre>
+
+  <h3 style="font-family:var(--font-serif);font-size:1.4rem;color:var(--cream);margin:2rem 0 .5rem">Disable a feature</h3>
+  <pre><span class="c">// In assets/js/main.js, find and comment out the section.
+// E.g. to remove magnetic buttons:</span>
+
+<span class="c">/* ---------- MAGNETIC BUTTONS ---------- */</span>
+<span class="c">// document.querySelectorAll('.btn-primary, ...').forEach(...)</span></pre>
+
+  <h3 style="font-family:var(--font-serif);font-size:1.4rem;color:var(--cream);margin:2rem 0 .5rem">Add a new page</h3>
+  <pre><span class="c">// 1. Copy any existing page as a starting point</span>
+cp about.html lookbook.html
+
+<span class="c">// 2. Update title, meta description, breadcrumb, h1</span>
+<span class="c">// 3. Add a link in &lt;ul class="nav-links"&gt; on every page</span>
+<span class="c">// 4. Optionally add to mobile-nav and footer</span></pre>
+</section>
+
+<footer class="site-footer">
+  <div class="footer-grid">
+    <div>
+      <a href="index.html" class="footer-logo">OORMII</a>
+      <p class="footer-tagline">A jewellery theme built for clarity, motion, and customisation.</p>
+      <div class="social-links"><a href="#" class="social-link">◎</a><a href="#" class="social-link">f</a><a href="#" class="social-link">▷</a><a href="#" class="social-link">𝕏</a></div>
+    </div>
+    <div><p class="footer-col-title">Pages</p><ul class="footer-links"><li><a href="index.html">Home</a></li><li><a href="collections.html">Collections</a></li><li><a href="product.html">Product</a></li><li><a href="cart.html">Cart</a></li><li><a href="wishlist.html">Wishlist</a></li></ul></div>
+    <div><p class="footer-col-title">Content</p><ul class="footer-links"><li><a href="about.html">About</a></li><li><a href="blog.html">Journal</a></li><li><a href="blog-post.html">Article</a></li><li><a href="faq.html">FAQ</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+    <div><p class="footer-col-title">Account</p><ul class="footer-links"><li><a href="account.html">Sign In</a></li><li><a href="account.html">Register</a></li><li><a href="404.html">404</a></li><li><a href="docs.html">Styleguide</a></li></ul></div>
+    <div><p class="footer-col-title">Docs</p><p class="footer-contact-info">README.md<br>docs.html<br>Inline CSS comments<br>Inline JS sections</p></div>
+  </div>
+  <div class="footer-bottom">
+    <p class="footer-copy">© 2026 Oormii Theme — built for ThemeForest.</p>
+  </div>
+</footer>
+
+<a href="https://wa.me/919876543210" id="whatsapp-float" target="_blank">✉</a>
+<button id="back-to-top">↑</button>
+
+<script src="assets/js/main.js"></script>
+</body>
+</html>
